@@ -25,7 +25,7 @@ const MyJobs = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/jobs/my/jobs', {
+      const response = await axios.get('https://job-app-961r.onrender.com/api/jobs/my/jobs', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -47,7 +47,7 @@ const MyJobs = () => {
     setDeleteLoading(jobId);
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/jobs/${jobId}`, {
+      await axios.delete(`https://job-app-961r.onrender.com/api/jobs/${jobId}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -73,7 +73,7 @@ const MyJobs = () => {
   const handleToggleStatus = async (jobId, currentStatus) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/jobs/${jobId}`, {
+      await axios.put(`https://job-app-961r.onrender.com/api/jobs/${jobId}`, {
         isActive: !currentStatus
       }, {
         headers: {

@@ -43,7 +43,7 @@ const PostJob = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:5000/api/jobs', formData, {
+      const response = await axios.post('https://job-app-961r.onrender.com/api/jobs', formData, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

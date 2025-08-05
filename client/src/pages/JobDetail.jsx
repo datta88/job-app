@@ -28,7 +28,7 @@ const JobDetail = () => {
   const fetchJobDetails = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/api/jobs/${id}`);
+      const response = await axios.get(`https://job-app-961r.onrender.com/api/jobs/${id}`);
       setJob(response.data);
       
       // Check if user has already applied
@@ -47,7 +47,7 @@ const JobDetail = () => {
     try {
       const token = localStorage.getItem('token');
       // Get user's applications and check if they applied for this job
-      const response = await axios.get(`http://localhost:5000/api/applications/my`, {
+      const response = await axios.get(`https://job-app-961r.onrender.com/api/applications/my`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -78,7 +78,7 @@ const JobDetail = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post(`http://localhost:5000/api/applications/jobs/${id}/apply`, {}, {
+      await axios.post(`https://job-app-961r.onrender.com/api/applications/jobs/${id}/apply`, {}, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'

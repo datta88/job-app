@@ -24,7 +24,7 @@ const MyApplications = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/applications/my', {
+      const response = await axios.get('https://job-app-961r.onrender.com/api/applications/my', {
         headers: {
           'Authorization': `Bearer ${token}`
         }

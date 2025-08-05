@@ -32,7 +32,7 @@ const JobList = () => {
         ...filters
       });
 
-      const response = await axios.get(`http://localhost:5000/api/jobs?${params}`);
+      const response = await axios.get(`https://job-app-961r.onrender.com/api/jobs?${params}`);
       setJobs(response.data.jobs);
       setTotalPages(response.data.totalPages);
       setError('');
