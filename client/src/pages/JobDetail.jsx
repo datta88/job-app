@@ -204,7 +204,7 @@ const JobDetail = () => {
               <div className="meta-item">
                 <FaMapMarkerAlt />
                 <span>{job.location}</span>
-                {job.isRemote && <span className="remote-badge">Remote</span>}
+                {job.is_remote && <span className="remote-badge">Remote</span>}
               </div>
               
               {job.salary && (
@@ -216,12 +216,12 @@ const JobDetail = () => {
               
               <div className="meta-item">
                 <FaClock />
-                <span className="capitalize">{job.jobType}</span>
+                <span className="capitalize">{job.job_type?.replace('-', ' ') || 'Full Time'}</span>
               </div>
               
               <div className="meta-item">
                 <FaGraduationCap />
-                <span className="capitalize">{job.experienceLevel} Level</span>
+                <span className="capitalize">{job.experience_level || 'Mid'} Level</span>
               </div>
               
               <div className="meta-item">
@@ -229,11 +229,11 @@ const JobDetail = () => {
                 <span>Posted: {formatDate(job.createdAt)}</span>
               </div>
               
-              {job.applicationDeadline && (
+              {job.application_deadline && (
                 <div className="meta-item">
                   <FaCalendarAlt />
-                  <span className={formatDeadline(job.applicationDeadline) === 'Deadline passed' ? 'deadline-passed' : ''}>
-                    {formatDeadline(job.applicationDeadline)}
+                  <span className={formatDeadline(job.application_deadline) === 'Deadline passed' ? 'deadline-passed' : ''}>
+                    {formatDeadline(job.application_deadline)}
                   </span>
                 </div>
               )}
@@ -340,11 +340,11 @@ const JobDetail = () => {
                 </div>
                 <div className="summary-item">
                   <span className="label">Job Type:</span>
-                  <span className="value capitalize">{job.jobType}</span>
+                  <span className="value capitalize">{job.job_type?.replace('-', ' ') || 'Full Time'}</span>
                 </div>
                 <div className="summary-item">
                   <span className="label">Experience:</span>
-                  <span className="value capitalize">{job.experienceLevel}</span>
+                  <span className="value capitalize">{job.experience_level || 'Mid Level'}</span>
                 </div>
                 {job.salary && (
                   <div className="summary-item">
@@ -354,12 +354,12 @@ const JobDetail = () => {
                 )}
                 <div className="summary-item">
                   <span className="label">Remote:</span>
-                  <span className="value">{job.isRemote ? 'Yes' : 'No'}</span>
+                  <span className="value">{job.is_remote ? 'Yes' : 'No'}</span>
                 </div>
               </div>
             </div>
 
-            {user?.role === 'employer' && job.postedBy === user.id && (
+            {user?.role === 'employer' && job.posted_by === user.id && (
               <div className="sidebar-card">
                 <h3>Employer Actions</h3>
                 <div className="action-buttons">

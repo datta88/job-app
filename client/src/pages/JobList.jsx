@@ -222,14 +222,14 @@ const JobList = () => {
                       <Link to={`/jobs/${job.id}`}>{job.title}</Link>
                     </h3>
                     <div className="job-badges">
-                      <span className={`badge ${getJobTypeColor(job.jobType)}`}>
-                        {job.jobType.replace('-', ' ')}
+                      <span className={`badge ${getJobTypeColor(job.job_type)}`}>
+                        {job.job_type?.replace('-', ' ') || 'Full Time'}
                       </span>
-                      {job.isRemote && (
+                      {job.is_remote && (
                         <span className="badge badge-success">Remote</span>
                       )}
-                      <span className={`badge ${getExperienceColor(job.experienceLevel)}`}>
-                        {job.experienceLevel}
+                      <span className={`badge ${getExperienceColor(job.experience_level)}`}>
+                        {job.experience_level || 'Mid Level'}
                       </span>
                     </div>
                   </div>
@@ -250,7 +250,7 @@ const JobList = () => {
                   </div>
                   
                   <div className="job-description">
-                    <p>{job.description.substring(0, 150)}...</p>
+                    <p>{job.description?.substring(0, 150) || 'No description available'}...</p>
                   </div>
                   
                   <div className="job-card-footer">
@@ -258,7 +258,7 @@ const JobList = () => {
                       View Details
                     </Link>
                     <small className="text-muted">
-                      Posted {new Date(job.createdAt).toLocaleDateString()}
+                      Posted {job.createdAt ? new Date(job.createdAt).toLocaleDateString() : 'Recently'}
                     </small>
                   </div>
                 </div>

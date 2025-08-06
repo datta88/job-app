@@ -206,7 +206,7 @@ const MyJobs = () => {
                     <div className="job-detail">
                       <FaMapMarkerAlt />
                       <span>{job.location}</span>
-                      {job.isRemote && <span className="remote-badge">Remote</span>}
+                      {job.is_remote && <span className="remote-badge">Remote</span>}
                     </div>
                     
                     {job.salary && (
@@ -218,17 +218,17 @@ const MyJobs = () => {
                     
                     <div className="job-detail">
                       <FaClock />
-                      <span className="capitalize">{job.jobType}</span>
+                      <span className="capitalize">{job.job_type?.replace('-', ' ') || 'Full Time'}</span>
                     </div>
                     
                     <div className="job-detail">
                       <FaUsers />
-                      <span className="capitalize">{job.experienceLevel} Level</span>
+                      <span className="capitalize">{job.experience_level || 'Mid'} Level</span>
                     </div>
                   </div>
 
                   <div className="job-description">
-                    <p>{job.description.substring(0, 150)}...</p>
+                    <p>{job.description?.substring(0, 150) || 'No description available'}...</p>
                   </div>
 
                   <div className="job-footer">
@@ -238,10 +238,10 @@ const MyJobs = () => {
                     </div>
                     
                     <button
-                      onClick={() => handleToggleStatus(job.id, job.isActive)}
-                      className={`btn btn-sm ${job.isActive ? 'btn-warning' : 'btn-success'}`}
+                      onClick={() => handleToggleStatus(job.id, job.is_active)}
+                      className={`btn btn-sm ${job.is_active ? 'btn-warning' : 'btn-success'}`}
                     >
-                      {job.isActive ? 'Deactivate' : 'Activate'}
+                      {job.is_active ? 'Deactivate' : 'Activate'}
                     </button>
                   </div>
                 </div>
@@ -260,11 +260,11 @@ const MyJobs = () => {
                   <span className="stat-label">Total Jobs</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-number">{jobs.filter(job => job.isActive).length}</span>
+                  <span className="stat-number">{jobs.filter(job => job.is_active).length}</span>
                   <span className="stat-label">Active Jobs</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-number">{jobs.filter(job => !job.isActive).length}</span>
+                  <span className="stat-number">{jobs.filter(job => !job.is_active).length}</span>
                   <span className="stat-label">Inactive Jobs</span>
                 </div>
               </div>
